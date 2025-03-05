@@ -1,5 +1,6 @@
 from collections import defaultdict
 from decimal import Decimal
+from io import BytesIO
 from django.http import HttpResponse
 from django.template import loader
 
@@ -28,6 +29,10 @@ def menu(request):
 def menu_modify(request):
     """ Handles menu upload, preview, confirmation, and rollback all in one view. """
     
+    # If the user requests an export
+    if request.method == "GET" and "export" in request.GET:
+        return export_menu()
+
     # If a file is uploaded, process it
     if request.method == "POST" and "file" in request.FILES:
         uploaded_file = request.FILES["file"]
@@ -123,3 +128,27 @@ def menu_modify(request):
         "menu_backup": menu_backup
         }
     return render(request, "modify.html", context)
+
+def export_menu():
+    """Exports the current menu as an Excel file."""
+    menu_items = Menu.objects.all().values("name", "ingredients", "category", "price")
+
+    if not menu_items:
+        return HttpResponse("No menu data available.", content_type="text/plain")
+
+    df = pd.DataFrame(menu_items)
+    
+    # Ensure price is formatted correctly
+    df["price"] = df["price"].apply(lambda x: format(x, ".2f") if isinstance(x, Decimal) else x)
+
+    # Create an in-memory Excel file
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine="openpyxl") as writer:
+        df.to_excel(writer, index=False, sheet_name="Menu")
+
+    output.seek(0)
+    
+    response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response["Content-Disposition"] = 'attachment; filename="menu.xlsx"'
+
+    return response
