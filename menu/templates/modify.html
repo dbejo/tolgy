@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Étlap módosítása</h1>
+{%if not menu_preview %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file" id="fileInput" accept=".xlsx" required onchange="toggleUploadButton()">
+    <button type="submit" id="uploadButton" disabled>Upload & Preview</button>
+</form>
+
+
+<!-- Export Button -->
+<form method="get" action="{% url 'menu_modify' %}">
+    <button type="submit">Export Current Menu</button>
+</form>
+{% endif %}
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<!-- Preview Section -->
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+{% if success %}
+    <div class="success">{{ success }}</div>
+{% endif %}
+{% if menu_preview %}
+    <h2>Preview Menu</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Ingredients</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        {% for item in menu_preview %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.ingredients }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Confirm Update Button -->
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="confirm_update" onclick="return confirmUpdate();">Confirm Update</button>
+    </form>
+    {% endif %}
+    <!-- Rollback Button -->
+    {% if menu_backup %}
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="rollback" onclick="return confirmRollback();">Rollback</button>
+    </form>
+    {% endif %}
+
+<script>
+function confirmUpdate() {
+    return confirm("Are you sure you want to update the menu? This will delete missing items.");
+}
+
+function confirmRollback() {
+    return confirm("Are you sure you want to roll back to the previous menu?");
+}
+
+function toggleUploadButton() {
+    var fileInput = document.getElementById("fileInput");
+    var uploadButton = document.getElementById("uploadButton");
+
+    uploadButton.disabled = !fileInput.files.length;
+}
+</script>
+
+</body>
+</html>

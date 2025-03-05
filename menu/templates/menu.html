@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Étlap</h1>
+{% for category, items in grouped_menu.items %}
+    <h2>{{ category }}</h2>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }} ({{ item.ingredients }}) - {{ item.price }} HUF</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>
