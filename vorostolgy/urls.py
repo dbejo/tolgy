@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from vorostolgy import views
+
 urlpatterns = [
-    path('menu/', include('menu.urls')),
+    path("", views.home, name="home"),
+    path("elerhetoseg/", views.contact, name="contact"),
+    path('etlap/', include('menu.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

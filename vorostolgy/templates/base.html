@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>Vörös Tölgy Étel-Ital Bár - Vámosmikola</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">Vörös Tölgy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                      <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}">Étlap</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Elérhetőség</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+        <footer class="bg-light">
+            <div class="container">
+                <div class="row pt-4 text-md-start text-center">
+                    <div class="col-md-4">
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fvorostolgy&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=277945368892934" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        </div>
+                    <div class="col-md-4">
+                        <p class="fw-bold m-0">Nyitvatartás</p>
+                        <p>H-V: 10:00-20:00</p>
+                        <p class="fw-bold m-0">Konyha nyitvatartás</p>
+                        <p>H-V: 10:00-19:00</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="fw-bold m-0">Cím</p>
+                        <p>Vámosmikola, Árpád utca 1.</p>
+                        <p class="fw-bold m-0">Telefon</p>
+                        <p class="">+36 27 376 282</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+            <button class="btn btn-primary btn-lg border-0 p-2 shadow" type="button" title="+3627376282">
+                <a href="tel:+3627376282" class="text-white fw-bold fs-4 text-decoration-none"> Rendelj telefonon! </a>
+            </button>
+        </div>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    </body>
+</html>

@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'base.html' %}
 
-<h1>Étlap</h1>
+{% block content %}
+<div class="container mt-5">
+<h1 class="pt-4">Étlap</h1>
+<div class="row row-cols-1 row-cols-md-2">
 {% for category, items in grouped_menu.items %}
-    <h2>{{ category }}</h2>
-    <ul>
-        {% for item in items %}
-            <li>{{ item.name }} ({{ item.ingredients }}) - {{ item.price }} HUF</li>
-        {% endfor %}
-    </ul>
+    <div class="col">
+        <h2>{{ category }}</h2>
+        <div>
+            {% for item in items %}
+                <div class="row fs-5 mb-1">
+                    <div class="col-8">{{ item.name }}</div>
+                    <div class="col-4">{{ item.price }} Ft.</div>
+                    <div class="row">
+                        <div class="col-12 fw-lighter">{{ item.ingredients }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endfor %}
-
-</body>
-</html>
+</div>
+<p class="fw-lighter my-2">Áraink forintban értendők és az ÁFÁ-t tartalmazzák.</p>
+</div>
+{% endblock %}
