@@ -15,8 +15,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                      <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}">Étlap</a></li>
-                      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Elérhetőség</a></li>
+                      <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'menu' %}active{% endif %}" href="{% url 'menu' %}">Étlap</a></li>
+                      <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Elérhetőség</a></li>
                     </ul>
                 </div>
             </div>
