@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="bg-light">
+<div class="dark-background text-white">
 <div class="container py-4">
-<div class="row d-flex align-items-center mt-5">
+<div class="row d-flex align-items-center my-5">
     <div class="col-md-6">
         <h2 class="display-5 fw-bold">Üdvözöljük a Vörös Tölgy Étel-Ital Bárban!</h2>
         <p class="text-justify">A Börzsöny hegység lábánál, az Ipoly folyóhoz közel, barátságos környezetben, helyben készült pizzákkal, gyrossal, burgerekkel, tortillával várjuk kedves vendégeinket. Szórakozási lehetőség: csocsó, biliárd.</p>
-        <a href="{% url 'menu' %}" class="btn btn-primary btn-lg mb-2">Tekintse meg kínálatunk!</a>
+        <a href="{% url 'menu' %}" class="btn btn-lg mb-2 main-background shadow">Tekintse meg kínálatunk!</a>
     </div>
     <div class="col-md-6 my-2 my-md-0">
-        <img src="{% static 'img/tolgy.jpg' %}" alt="Vörös Tölgy Étel-Ital Bár" class="img-fluid rounded">
+        <img src="{% static 'img/tolgy.jpg' %}" alt="Vörös Tölgy Étel-Ital Bár" class="img-fluid rounded shadow">
     </div>
 </div>
 </div>
 </div>
+<div class="gray-background">
 <div class="container">
-<div class="row my-5 d-flex align-items-stretch g-5">
+<div class="row py-4 d-flex align-items-stretch g-5">
     <div class="col-md-6 mt-0">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow h-100 white-background">
             <img src="{% static 'img/card_payment.jpg' %}" alt="Bankkártyás fizetési lehetőség" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
                 <h2 class="card-title fs-5">Bankkártyás fizetési lehetőség</h2>
@@ -27,7 +28,7 @@
         </div>
     </div>
     <div class="col-md-6 mt-0">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 shadow h-100 white-background">
             <img src="{% static 'img/szep_kartyak.png' %}" alt="SZÉP-Kártya elfogadóhely" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
                 <h2 class="card-title fs-5">SZÉP-Kártya elfogadóhely lettünk!</h2>
@@ -35,6 +36,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 {% endblock %}

@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="white-background">
 <div class="container mt-5">
-<h1 class="pt-4">Étlap</h1>
+<h1 class="pt-4 main-underline">Étlap</h1>
 <div class="row row-cols-1 row-cols-md-2">
 {% for category, items in grouped_menu.items %}
     <div class="col">
-        <h2>{{ category }}</h2>
+        <h2 class="main-color">{{ category }}</h2>
         <div>
             {% for item in items %}
-                <div class="row fs-5 mb-1">
+                <div class="row fs-5 pb-1">
                     <div class="col-8">{{ item.name }}</div>
                     <div class="col-4">{{ item.price }} Ft.</div>
                     <div class="row">
@@ -21,6 +22,7 @@
     </div>
 {% endfor %}
 </div>
-<p class="fw-lighter my-2">Áraink forintban értendők és az ÁFÁ-t tartalmazzák.</p>
+<p class="fw-lighter py-2 mb-0">Áraink forintban értendők és az ÁFÁ-t tartalmazzák.</p>
+</div>
 </div>
 {% endblock %}

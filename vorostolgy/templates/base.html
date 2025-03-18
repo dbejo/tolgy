@@ -7,7 +7,7 @@
         <title>Vörös Tölgy Étel-Ital Bár - Vámosmikola</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark dark-background fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'home' %}">Vörös Tölgy</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,19 +23,19 @@
         </nav>
         {% block content %}
         {% endblock %}
-        <footer class="bg-light">
+        <footer class="dark-background text-white-50">
             <div class="container">
-                <div class="row pt-4 text-md-start text-center">
-                    <div class="col-md-4">
+                <div class="row pt-4 text-lg-start text-center">
+                    <div class="col-lg-4">
                         <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fvorostolgy&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=277945368892934" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                         </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <p class="fw-bold m-0">Nyitvatartás</p>
                         <p>H-V: 10:00-20:00</p>
                         <p class="fw-bold m-0">Konyha nyitvatartás</p>
                         <p>H-V: 10:00-19:00</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <p class="fw-bold m-0">Cím</p>
                         <p>Vámosmikola, Árpád utca 1.</p>
                         <p class="fw-bold m-0">Telefon</p>
@@ -45,7 +45,7 @@
             </div>
         </footer>
         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
-            <button class="btn btn-primary btn-lg border-0 p-2 shadow" type="button" title="+3627376282">
+            <button class="btn main-background btn-lg border-0 p-2 shadow" type="button" title="+3627376282">
                 <a href="tel:+3627376282" class="text-white fw-bold fs-4 text-decoration-none"> Rendelj telefonon! </a>
             </button>
         </div>

@@ -1,0 +1,39 @@
+.gray-background {
+    background-color: #d7d7d7;
+}
+
+.white-background{
+    background-color: #F2F1F0;
+}
+
+.grayish-background {
+    background-color: #A09792;
+}
+
+a.main-background, button.main-background {
+    background-color: #C0392B;
+    color: #fff;
+}
+
+a.main-background:hover, button.main-background:hover {
+    background-color: #aa3326;
+}
+
+.main-color {
+    color: #C0392B;
+}
+
+h1.main-underline, h2.main-underline {
+    text-decoration: underline;
+    text-decoration-color: #C0392B;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 9px;
+}
+
+.brown-color {
+    color: #9D7C63;
+}
+
+.dark-background {
+    background-color: #242427;
+}
