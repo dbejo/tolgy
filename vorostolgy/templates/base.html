@@ -25,6 +25,9 @@
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                       <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'menu' %}active{% endif %}" href="{% url 'menu' %}">Étlap</a></li>
                       <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Elérhetőség</a></li>
+                      {% if user.is_staff %}
+                      <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'admin' %}active{% endif %}" href="{% url 'admin' %}">Adminisztráció</a></li>
+                      {% endif %}
                     </ul>
                 </div>
             </div>

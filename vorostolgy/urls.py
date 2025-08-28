@@ -23,6 +23,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("elerhetoseg/", views.contact, name="contact"),
     path('etlap/', include('menu.urls')),
-    path('admin/', admin.site.urls),
+    path('superadmin/', admin.site.urls),
+    path('admin/', views.operator_admin, name='admin'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'base.html' %}
 
-<h1>Étlap módosítása</h1>
+{% block content %}
+<div class="white-background">
+<div class="container mt-5">
+<h1 class="pt-4 main-underline">Étlap módosítása</h1>
+<div class="py-4">
 {%if not menu_preview %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -15,6 +17,7 @@
 <form method="get" action="{% url 'menu_modify' %}">
     <button type="submit" name="export">Export Current Menu</button>
 </form>
+
 {% endif %}
 
 {% if error %}
@@ -61,6 +64,9 @@
         <button type="submit" name="rollback" onclick="return confirmRollback();">Rollback</button>
     </form>
     {% endif %}
+</div>
+</div>
+</div>
 
 <script>
 function confirmUpdate() {
@@ -78,6 +84,4 @@ function toggleUploadButton() {
     uploadButton.disabled = !fileInput.files.length;
 }
 </script>
-
-</body>
-</html>
+{% endblock %}
