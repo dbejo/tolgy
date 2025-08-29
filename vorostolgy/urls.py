@@ -25,5 +25,6 @@ urlpatterns = [
     path('etlap/', include('menu.urls')),
     path('superadmin/', admin.site.urls),
     path('admin/', views.operator_admin, name='admin'),
+    path('admin/alert/', include('alert.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

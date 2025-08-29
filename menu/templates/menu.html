@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+{% block title %} Étlap {% endblock %}
 {% block content %}
-<div class="white-background">
-<div class="container mt-5">
+<div class="white-background pb-5">
+<div class="container">
 <h1 class="pt-4 main-underline">Étlap</h1>
 <div class="row row-cols-1 row-cols-md-2">
 {% for category, items in grouped_menu.items %}

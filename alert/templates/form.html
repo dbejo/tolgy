@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="white-background">
+<div class="container">
+<h1 class="pt-4 main-underline">Értesítés</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% if alert %}
+    <input type="hidden" name="id" value="{{ alert.id }}">
+    {% endif %}
+    <div class="mb-3">
+        <label for="title" class="form-label">Cím</label>
+        <input type="text" class="form-control" id="title" name="title" {% if alert %} value="{{ alert.title }}" {% endif %} required>
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Üzenet</label>
+        <textarea class="form-control" id="message" name="message" rows="3" required>{% if alert %}{{ alert.message }}{% endif %}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="valid_until" class="form-label">Érvényesség</label>
+        <input type="date" class="form-control" id="valid_until" name="valid_until" {% if alert %} value="{{ alert.valid_until }}" {% endif %} required>
+    </div>
+    <button type="submit" class="btn btn-primary">Küldés</button>
+</form>
+</div>
+</div>
+{% endblock %}

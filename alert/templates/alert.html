@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="white-background">
+<div class="container">
+    <div class="d-flex align-items-center justify-content-between py-4">
+        <h1 class="main-underline mb-0">Felhasználói értesítések</h1>
+        <a href="{% url 'create' %}" class="btn btn-success">Új értesítés</a>
+    </div>
+    <p>Az értesítések mellett található gyorsgombok segítségével könnyedén kezelheted az értesítéseket. A zöld + gomb 1 nappal meghosszabbíthatod, a sárga ceruzával módosíthatod, a piros X gombbal pedig inaktiválhatod az értesítést.</p>
+    {% for alert in alerts %}
+    <div class="py-2">
+        <div class="alert alert-light" role="alert">
+            <div class="row">
+                <div class="col-10">
+                    <h4 class="alert-heading">{{ alert.title }} <span
+                        {% if alert.is_active %}
+                        class="badge bg-success"
+                        {% else %}
+                        class="badge bg-danger"
+                        {% endif %}
+                        >Érvényes: {{ alert.valid_until|date:"Y-m-d" }}</span></h4>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-4">
+                            <form action="{% url 'extend' alert.pk %}" method="post">
+                                {% csrf_token %}
+                                <input type="number" name="days" value="1" hidden>
+                                <button type="submit" class="btn btn-outline-success">+</button>
+                            </form>
+                        </div>
+                        <div class="col-4">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-warning">✎</button>
+                            </form>
+                        </div>
+                        <div class="col-4">
+                            <form action="{% url 'deactivate' alert.pk %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger">x</button>
+                            </form>
+                        </div>
+                </div>
+                </div>
+            </div>
+            <p>{{ alert.message }}</p>
+            <hr>
+            <p class="mb-0">Létrehozva: {{ alert.created_at|date:"Y-m-d" }} | Frissítve: {{ alert.updated_at|date:"Y-m-d" }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

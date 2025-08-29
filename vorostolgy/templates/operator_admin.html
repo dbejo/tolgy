@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="white-background">
-<div class="container mt-5">
+<div class="white-background pb-5">
+<div class="container">
 <h1 class="pt-4 main-underline">Adminisztráció</h1>
 <p>Ez az oldal az adminisztrációs felület, ahol kezelheti az étlapot.</p>
 <div class="py-4">
-<a href="{% url 'menu_modify' %}" class="btn btn-primary">Étlap módosítása</a>
+<a href="{% url 'menu_modify' %}" class="btn btn-secondary">Étlap módosítása</a>
+<a href="{% url 'alert' %}" class="btn btn-secondary">Értesítések kezelése</a>
 </div>
 </div>
 </div>

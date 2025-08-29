@@ -3,20 +3,34 @@
 {% block content %}
 <div class="dark-background text-white">
 <div class="container py-4">
-<div class="row d-flex align-items-center my-5 g-5">
-    <div class="col-md-6">
-        <h2 class="display-5 fw-bold">Üdvözöljük a Vörös Tölgy Étel-Ital Bárban!</h2>
-        <p class="text-justify">A Börzsöny hegység lábánál, az Ipoly folyóhoz közel, barátságos környezetben, helyben készült pizzákkal, gyrossal, burgerekkel, tortillával várjuk kedves vendégeinket. Szórakozási lehetőség: csocsó, biliárd.</p>
-        <a href="{% url 'menu' %}" class="btn btn-lg mb-2 main-background shadow">Tekintse meg kínálatunk!</a>
+    {% if alerts %}
+    <div class="mb-md-5">
+    {% for alert in alerts %}
+    <div class="row">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">{{ alert.title }}</h4>
+            <p>{{ alert.message }}</p>
+        </div>
     </div>
-    <div class="col-md-6 my-2 my-md-0">
-        <img src="{% static 'img/tolgy.jpg' %}" alt="Vörös Tölgy Étel-Ital Bár" class="img-fluid rounded shadow">
+    {% endfor %}
+    </div>
+    <div class="row d-flex align-items-center mb-5 g-5">
+    {% else %}
+    <div class="row d-flex align-items-center mt-0 mb-5 g-5">
+    {% endif %}
+        <div class="col-md-6">
+            <h2 class="display-5 fw-bold">Üdvözöljük a Vörös Tölgy Étel-Ital Bárban!</h2>
+            <p class="text-justify">A Börzsöny hegység lábánál, az Ipoly folyóhoz közel, barátságos környezetben, helyben készült pizzákkal, gyrossal, burgerekkel, tortillával várjuk kedves vendégeinket. Szórakozási lehetőség: csocsó, biliárd.</p>
+            <a href="{% url 'menu' %}" class="btn btn-lg mb-2 main-background shadow">Tekintse meg kínálatunk!</a>
+        </div>
+        <div class="col-md-6 my-2 my-md-0">
+            <img src="{% static 'img/tolgy.jpg' %}" alt="Vörös Tölgy Étel-Ital Bár épülete" class="img-fluid rounded shadow">
+        </div>
     </div>
 </div>
 </div>
-</div>
-<div class="gray-background">
-<div class="container">
+<div class="white-background">
+<div class="container pb-4">
 <div class="row py-4 d-flex align-items-stretch g-5">
     <div class="col-md-6 mt-0">
         <div class="card border-0 shadow h-100 white-background">

@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="white-background">
-<div class="container mt-5">
+<div class="container">
 <h1 class="pt-4 main-underline">Étlap módosítása</h1>
 <div class="py-4">
 {%if not menu_preview %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="file" id="fileInput" accept=".xlsx" required onchange="toggleUploadButton()">
-    <button type="submit" id="uploadButton" disabled>Upload & Preview</button>
+    <input type="file" name="file" id="fileInput" accept=".xlsx" required onchange="toggleUploadButton()" class="btn btn-secondary my-2">
+    <button type="submit" id="uploadButton" disabled class="btn btn-secondary my-2">Feltöltés & Előnézet</button>
 </form>
 
 
 <!-- Export Button -->
 <form method="get" action="{% url 'menu_modify' %}">
-    <button type="submit" name="export">Export Current Menu</button>
+    <button type="submit" name="export" class="btn btn-secondary my-2">Jelenlegi menü exportálása</button>
 </form>
 
 {% endif %}
@@ -33,13 +33,13 @@
     <div class="success">{{ success }}</div>
 {% endif %}
 {% if menu_preview %}
-    <h2>Preview Menu</h2>
+    <h2>Menü előnézete</h2>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Ingredients</th>
-            <th>Category</th>
-            <th>Price</th>
+            <th>Név</th>
+            <th>Összetevők</th>
+            <th>Kategória</th>
+            <th>Ár</th>
         </tr>
         {% for item in menu_preview %}
         <tr>
@@ -54,14 +54,14 @@
     <!-- Confirm Update Button -->
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" name="confirm_update" onclick="return confirmUpdate();">Confirm Update</button>
+        <button type="submit" name="confirm_update" onclick="return confirmUpdate();" class="btn btn-secondary my-2">Módosítás megerősítése</button>
     </form>
     {% endif %}
     <!-- Rollback Button -->
     {% if menu_backup %}
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" name="rollback" onclick="return confirmRollback();">Rollback</button>
+        <button type="submit" name="rollback" onclick="return confirmRollback();" class="btn btn-secondary my-2">Visszaállítás</button>
     </form>
     {% endif %}
 </div>
@@ -70,11 +70,11 @@
 
 <script>
 function confirmUpdate() {
-    return confirm("Are you sure you want to update the menu? This will delete missing items.");
+    return confirm("Biztos benne, hogy módosítani szeretné az étlapot? Ez törli a hiányzó tételeket.");
 }
 
 function confirmRollback() {
-    return confirm("Are you sure you want to roll back to the previous menu?");
+    return confirm("Biztos benne, hogy vissza szeretné állítani a korábbi étlapot?");
 }
 
 function toggleUploadButton() {

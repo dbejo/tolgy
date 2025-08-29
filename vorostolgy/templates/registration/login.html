@@ -1,5 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="white-background">
+<div class="container">
+<h1 class="pt-4 main-underline">Bejelentkezés</h1>
+<div class="py-4">
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-secondary">Bejelentkezés</button>
 </form>
+</div>
+</div>
+</div>
+{% endblock %}
